@@ -27,14 +27,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "timecop"
   spec.add_development_dependency "faker"
 
+  spec.add_dependency 'faraday'
+  spec.add_dependency 'activeresource'
   spec.add_dependency 'activesupport'
   spec.add_dependency "platform-api"
-  spec.add_dependency 'google-api-client', "~> 0.6.4"
   spec.add_dependency 'newrelic_api', "~> 1.2.4"
-  spec.add_dependency 'activeresource'
-  spec.add_dependency 'librato-metrics'
-  spec.add_dependency 'aws-sdk-v1'  # for SES
-  spec.add_dependency 'bugsnag'     # optional error reporter
-  spec.add_dependency 'jwt', "~> 0.1.11"
-  spec.add_dependency 'faraday'
 end

@@ -10,8 +10,6 @@ require 'faker'
 require 'dynosaur'
 require 'dynosaur/inputs/random_plugin'
 require 'dynosaur/inputs/sine_plugin'
-require 'dynosaur/inputs/papertrail_random_input_plugin'
-require 'dynosaur/inputs/rediscloud_random_input_plugin'
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|

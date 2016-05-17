@@ -1,11 +1,9 @@
 
 require 'dynosaur/heroku_manager'
 require 'dynosaur/heroku_dyno_manager'
-require 'dynosaur/heroku_addon_manager'
 require 'dynosaur/version'
 require 'dynosaur/error_handler'
 require 'dynosaur/ring_buffer'
-require 'dynosaur/addon_plan'
 require 'dynosaur/base_plugin'
 require 'dynosaur/controllers/abstract_controller_plugin'
 require 'dynosaur/inputs/abstract_input_plugin'
@@ -152,8 +150,6 @@ module Dynosaur
           plugin = klass.new(config.merge({
             "heroku_app_name" => @heroku_app_name,
             "heroku_api_key" => @heroku_api_key,
-            "librato_email" => @librato_email,
-            "librato_api_key" => @librato_api_key,
           }))
           break
         end
