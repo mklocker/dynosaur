@@ -20,7 +20,7 @@ module Dynosaur
           begin
             handler.handle(exception)
           rescue StandardError => e
-            puts "Error handler caused an error! Now we're in trouble"
+            puts "Dynosaur - Auto Scaling: Error handler caused an error! Now we're in trouble"
             puts e.message
             puts e.backtrace.join("\n")
           end

@@ -7,7 +7,7 @@ module Dynosaur
     end
 
     def set(value)
-      puts "Setting current dynos to #{value}"
+      puts "Dynosaur - Auto Scaling: Setting current dynos to #{value}"
       if !@dry_run
         @heroku_platform_api.formation.update(@app_name, 'web', {quantity: value})
       end

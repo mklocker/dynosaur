@@ -20,7 +20,7 @@ module Dynosaur
 
     def initialize(config)
       STDOUT.sync = true
-      puts "Dynosaur version #{Dynosaur::VERSION} initializing"
+      puts "Dynosaur - Auto Scaling: Dynosaur version #{Dynosaur::VERSION} initializing"
       if config.nil?
         raise ArgumentError.new "Must supply config hash"
       end
@@ -141,7 +141,7 @@ module Dynosaur
       plugin = nil
       subclasses.each { |klass|
         if klass.name == config["type"]
-          puts "Instantiating #{klass.name} for config '#{config["name"]}'"
+          puts "Dynosaur - Auto Scaling: Instantiating #{klass.name} for config '#{config["name"]}'"
           if @dry_run
             # Dry run is set globally
             # if it's not set globally, let each controller have its own dry run setting

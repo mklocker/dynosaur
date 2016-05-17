@@ -52,7 +52,7 @@ module Dynosaur
           @value = self.retrieve
           @last_retrieved_ts = Time.now
         rescue StandardError => e
-          puts "Error in #{self.name}#retrieve : #{e.inspect}"
+          puts "Dynosaur - Auto Scaling: Error in #{self.name}#retrieve : #{e.inspect}"
           Dynosaur::ErrorHandler.handle(e)
           @value = -1
         end

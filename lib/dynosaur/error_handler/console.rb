@@ -5,7 +5,7 @@ module Dynosaur::ErrorHandler
     end
 
     def handle(exception)
-        puts "========= ERROR ==========="
+        puts "Dynosaur - Auto Scaling: ========= ERROR ==========="
         puts exception.message
         puts exception.backtrace.join("\n")
     end

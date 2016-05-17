@@ -29,7 +29,7 @@ module Dynosaur
           raise "You must supply API key in the new relic plugin config"
         end
         if @app_id.blank?
-          raise "You must supply appid in the new relic plugin config"
+          raise "You must supply app_id in the new relic plugin config"
         end
 
         @metric_name = "HttpDispatcher"
@@ -40,9 +40,11 @@ module Dynosaur
         return get_rpm
       end
 
-      def value_to_resources(value)
-        return -1 if value.nil?
-        return (value / @rpm_per_dyno.to_f).ceil
+      def value_to_resources(rpm)
+        return -1 if rpm.nil?
+        dynos_to_scale_to = (rpm / @rpm_per_dyno.to_f).ceil
+        puts "Dynosaur - Auto Scaling: RPM = #{rpm}. RPM per dyno: #{@rpm_per_dyno}. Recommended Dynos: #{dynos_to_scale_to}"
+        return dynos_to_scale_to
       end
 
       private
@@ -54,12 +56,13 @@ module Dynosaur
           # This is not an issue here because we always use the max value from
           # the ring buffer. This would become an issue if we had an
           # hysteresis_period smaller than 1 minute.
-          return @new_relic_api_client.get_metric(@metric_name,
+          rpm = @new_relic_api_client.get_metric(@metric_name,
                                                   value_name: 'call_count',
                                                   summarize: false)
+          return rpm
         rescue StandardError => e
           Dynosaur::ErrorHandler.handle(e)
-          puts "ERROR: failed to decipher New Relic result"
+          puts "Dynosaur - Auto Scaling: ERROR: failed to decipher New Relic result"
           puts e.inspect
         end
       end

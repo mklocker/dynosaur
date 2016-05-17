@@ -8,7 +8,7 @@ require 'erb'
 
 def load_config
   if ARGV.length != 1
-    puts "Usage: #{$0} config.yaml"
+    puts "Dynosaur - Auto Scaling: Usage: #{$0} config.yaml"
     exit 2
   end
   erb = File.read(ARGV[0])

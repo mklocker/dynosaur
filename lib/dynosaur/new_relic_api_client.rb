@@ -1,4 +1,5 @@
 require 'time'
+require 'faraday'
 
 module Dynosaur
   class NewRelicApiClient
@@ -43,7 +44,7 @@ module Dynosaur
         last_timeslice = response_data['metric_data']['metrics'][0]['timeslices'][-1]
         return last_timeslice['values'][value_name]
       else
-        puts "Error retrieving data from New Relic for metric #{metric_name}"
+        puts "Dynosaur - Auto Scaling: Error retrieving data from New Relic for metric #{metric_name}"
         return -1
       end
     end

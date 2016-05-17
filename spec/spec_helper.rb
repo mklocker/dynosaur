@@ -6,6 +6,7 @@
 require 'pry'
 require 'timecop'
 require 'faker'
+require 'faraday'
 
 require 'dynosaur'
 require 'dynosaur/inputs/random_plugin'

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.2.2'
 
-gem 'dynosaur', '~> 0.6', github: 'harrystech/dynosaur', branch: 'headless'
+gem 'dynosaur', '~> 0.7.2', github: 'mklocker/dynosaur'
 
 group :development do
   gem 'pry'

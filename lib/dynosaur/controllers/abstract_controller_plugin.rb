@@ -32,7 +32,7 @@ module Dynosaur
         # Load the class and instantiate it
         begin
           klass = input_plugin_config['type'].constantize
-          puts "Instantiating #{klass.name} for config '#{input_plugin_config["name"]}'"
+          puts "Dynosaur - Auto Scaling: Instantiating #{klass.name} for config '#{input_plugin_config["name"]}'"
           return klass.new(input_plugin_config)
         rescue NameError => e
           raise StandardError.new "Could not load #{input_plugin_config['type']}, #{e.message}"
@@ -78,7 +78,7 @@ module Dynosaur
         end
 
         if before != @current_estimate
-          puts "CHANGE: #{before} => #{@current_estimate}"
+          puts "Dynosaur - Auto Scaling: CHANGE: #{before} => #{@current_estimate}"
           @last_change_ts = Time.now
         end
         @current = @current_estimate
