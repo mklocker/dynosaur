@@ -10,8 +10,8 @@ controller_plugins:
     -
         name: dynos
         type: Dynosaur::Controllers::DynosControllerPlugin
-        min_web_dynos: <%= ENV.fetch('MIN_WEB_DYNOS', 2) %>
-        max_web_dynos: <%= ENV.fetch('MAX_WEB_DYNOS', 15) %>
+        min_resource: <%= ENV.fetch('MIN_WEB_DYNOS', 2) %>
+        max_resource: <%= ENV.fetch('MAX_WEB_DYNOS', 15) %>
         input_plugins:
             -
                 name: newrelic

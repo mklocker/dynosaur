@@ -141,10 +141,11 @@ module Dynosaur
       plugin = nil
       subclasses.each { |klass|
         if klass.name == config["type"]
-          puts "Dynosaur - Auto Scaling: Instantiating #{klass.name} for config '#{config["name"]}'"
+          puts "Dynosaur - Auto Scaling: Instantiating #{klass.name} for config "+
+                   "'#{config["name"]}'. Global DRY Run mode evaluates to: #{@dry_run == true}"
           if @dry_run
-            # Dry run is set globally
-            # if it's not set globally, let each controller have its own dry run setting
+            # Dry run is set globally, lets overwrite the controller specific
+            # "dry-run" settings and enforce the global dry-run mode.
             config.merge!({"dry_run" => true})
           end
           plugin = klass.new(config.merge({
